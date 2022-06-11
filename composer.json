@@ -1,0 +1,55 @@
+{
+    "name": "ibnuhalimm/laravel-midtrans",
+    "description": "Laravel wrapper for Midtrans payment gateway",
+    "keywords": [
+        "ibnuhalimm",
+        "laravel-midtrans"
+    ],
+    "homepage": "https://github.com/ibnuhalimm/laravel-midtrans",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ibnu Halim Mustofa",
+            "email": "ibnuhalim@pm.me",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "~8.0|~9.0",
+        "midtrans/midtrans-php": "2.*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ibnuhalimm\\LaravelMidtrans\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ibnuhalimm\\LaravelMidtrans\\MidtransServiceProvider"
+            ],
+            "aliases": {
+                "Midtrans": "Ibnuhalimm\\LaravelMidtrans\\Facades\\Midtrans"
+            }
+        }
+    }
+}
