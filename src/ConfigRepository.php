@@ -63,10 +63,6 @@ class ConfigRepository
      */
     public function getServerKey()
     {
-        if (empty($this->config['server_key'])) {
-            throw InvalidConfiguration::missingServerKey();
-        }
-
         return $this->config['server_key'];
     }
 
@@ -91,10 +87,6 @@ class ConfigRepository
      */
     public function getClientKey()
     {
-        if (empty($this->config['client_key'])) {
-            throw InvalidConfiguration::missingClientKey();
-        }
-
         return $this->config['client_key'];
     }
 
@@ -119,14 +111,6 @@ class ConfigRepository
      */
     public function isProductionMode()
     {
-        if (empty($this->config['mode'])) {
-            throw InvalidConfiguration::missingMode();
-        }
-
-        if ($this->allowedMode($this->config['mode']) === false) {
-            throw InvalidConfiguration::invalidModeValue();
-        }
-
         return $this->config['mode'] == 'production';
     }
 
