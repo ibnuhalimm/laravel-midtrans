@@ -19,6 +19,8 @@ class ConfigRepository
     public function __construct(array $config)
     {
         $this->config = $config;
+
+        $this->setupMidtransConfig();
     }
 
     /**
@@ -42,17 +44,21 @@ class ConfigRepository
      * @param  array  $attributes
      * @return void
      */
-    public function mergeOptions(array $attributes)
+    public function mergeOptions(?array $attributes = null)
     {
-        foreach ($attributes as $key => $value) {
-            if ($key == 'server_key') {
-                $this->setServerKey($value);
-            } elseif ($key == 'client_key') {
-                $this->setClientKey($value);
-            } elseif ($key == 'mode') {
-                $this->setMode($value);
+        if (is_array($attributes)) {
+            foreach ($attributes as $key => $value) {
+                if ($key == 'server_key') {
+                    $this->setServerKey($value);
+                } elseif ($key == 'client_key') {
+                    $this->setClientKey($value);
+                } elseif ($key == 'mode') {
+                    $this->setMode($value);
+                }
             }
         }
+
+        $this->setupMidtransConfig();
     }
 
     /**

@@ -27,12 +27,12 @@ class MidtransServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-midtrans');
 
-        $this->app->bind(ConfigRepository::class, function () {
+        $this->app->singleton(ConfigRepository::class, function () {
             return new ConfigRepository($this->app['config']['laravel-midtrans']);
         });
 
         // Register the main class to use with the facade
-        $this->app->singleton(Midtrans::class, function (Application $app) {
+        $this->app->bind(Midtrans::class, function (Application $app) {
             return new Service(
                 $app->make(ConfigRepository::class)
             );

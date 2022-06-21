@@ -46,8 +46,6 @@ class Service
      */
     public function getSnapToken(array $params)
     {
-        $this->configRepo->setupMidtransConfig();
-
         try {
             return Snap::getSnapToken($params);
         } catch (\Exception $e) {
@@ -64,8 +62,6 @@ class Service
      */
     public function getSnapUrl(array $params)
     {
-        $this->configRepo->setupMidtransConfig();
-
         try {
             return Snap::getSnapUrl($params);
         } catch (\Exception $e) {
@@ -82,8 +78,6 @@ class Service
      */
     public function charge(array $params)
     {
-        $this->configRepo->setupMidtransConfig();
-
         try {
             return CoreApi::charge($params);
         } catch (\Exception $e) {
@@ -100,8 +94,6 @@ class Service
      */
     public function transaction(string $id)
     {
-        $this->configRepo->setupMidtransConfig();
-
         return (new Transaction())->setId($id);
     }
 }
